@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    <style>
+        body {
+            height: 100vh;
+            background: url(./images/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            border-radius: 5px;
+            box-shadow: 0px 0px 20px 0px #e1e1e1;
+            width: 1200px;
+            height: 600px;
+            border: 1px solid rgb(237, 237, 237);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .col {
+            width: 33.33%;
+            height: 100%;
+            border: 1px solid rgb(216, 216, 216);
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            font-size: 34px;
+        }
+        .left-col #first{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .images {
+            width: 300px;
+            max-height: 500px;
+            margin: 0 auto;
+            margin-top: -20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img {
+            margin: 0 auto;
+            width: 200px;
+            height: 33.33%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 160px;
+            height: 160px;
+            transition-duration: 0.3s;
+        }
+
+        .left-col img:not(.disabled):hover {
+            transform: perspective(500px) translateZ(-100px);
+            cursor: pointer;
+        }
+
+        .center-col section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        section {
+            /* width: 100%; */
+            height: 80%;
+        }
+
+        #second.img,
+        #second .img img {
+            width: 260px;
+            height: 260px;
+        }
+
+        .right-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            width: 100%;
+            height: 50%;
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h3,
+        h4 {
+            height: 10px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 3px;
+            border: none;
+            font-size: 20px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position:relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 20px 0px black;
+        }
+        button span{
+            z-index: 100;
+            transition: 0.6s;
+        }
+        button::before{
+            content: '';
+            width: 0px;
+            height: 0px ;
+            transition: 0.6s;
+            position: absolute;
+            left: 50%;
+            z-index: 0;
+            border-radius: 100%;
+            transform-origin: center;
+        }
+        button:hover span{
+            color: white;
+        }
+        button:hover::before{
+            transform: translateX(-110px);
+            width:220px ;
+            height: 220px;
+            background-color: black;
+        }
+        button:active{
+            box-shadow: none;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="container">
+            <div class="left-col col">
+                <h2>You Choose...</h2>
+                <section id="first">
+                    <div class="images">
+                        <div class="img">
+                            <img class="user-choice abled" src="images/rock.png" alt="paper">
+                        </div>
+                        <div class="img">
+                            <img class="user-choice abled" src="images/paper.png" alt="rock">
+                        </div>
+                        <div class="img">
+                            <img class="user-choice abled" src="images/scissors.png" alt="scissors">
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="center-col col">
+                <h2>Computer Chooses...</h2>
+                <section id="second">
+                    <!-- <div class="img hidden cpu-img"> -->
+                        <img class="cpu hidden" src="images/rock.png" alt="scissors">
+                    <!-- </div> -->
+                    <!-- <div class="img hidden cpu-img" > -->
+                        <img class="cpu hidden" src="images/paper.png" alt="scissors">
+                    <!-- </div> -->
+                    <!-- <div class="img hidden cpu-img"> -->
+                        <img class="cpu hidden" src="images/scissors.png" alt="scissors">
+                    <!-- </div> -->
+                </section>
+            </div>
+            <div class="right-col col">
+                <div class="up-row row">
+                    <div class="info">
+                        <h3>Your Score :</h3>
+                        <h4 id="user-score">0</h4>
+                    </div>
+                </div>
+                <div class="center-row row">
+                    <div class="info">
+                        <h3>Computer Score :</h3>
+                        <h4 id="cpu-score">0</h4>
+                    </div>
+                </div>
+                <div class="down-row row">
+                    <button>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/rock-paper-scissor.js"></script>
+</body>
+
+</html>
